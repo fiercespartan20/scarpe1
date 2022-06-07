@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Material Mixture{% endblock title %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Material Mixture</a></li>
+                            <li class="active">Create</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Mixture Details</strong>
+            </div>
+            
+            <div class="card-body">
+
+                <center>
+                <form class="form-inline" action="#" method="post" novalidate="novalidate" id="inline-form">
+                    {% csrf_token %}
+                    {{ form.as_table }}
+
+                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                        <span id="payment-button-amount">Create Supplier</span>
+                    </button>
+
+                </form>
+                 </center>
+            </div>
+        </div> <!-- .card -->
+
+    </div>
+    <!--/.col-->
+</div>
+{% endblock content %}
