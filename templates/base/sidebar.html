@@ -35,10 +35,19 @@
 
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Mixture Material</a>
+                        aria-expanded="false"> <i class="menu-icon fa fa-user-o "></i>Mixture Material</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-mixture-material' %}">Add</a></li>
                         <li><i class="fa fa-th"></i><a href="{% url 'material-list' %}">View</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"> <i class="menu-icon fa fa-dot-circle-o "></i>Overhead Cost</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-overheadcost' %}">Add</a></li>
+                        <li><i class="fa fa-th"></i><a href="{% url 'cost-list' %}">View</a></li>
                     </ul>
                 </li>
 
