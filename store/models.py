@@ -5,7 +5,7 @@ from users.models import User
 
 class Supplier(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120)
     address = models.CharField(max_length=220)
 
     def __str__(self):

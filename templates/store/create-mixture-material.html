@@ -36,20 +36,88 @@
             <div class="card-header">
                 <strong class="card-title">Mixture Details</strong>
             </div>
-            
+
             <div class="card-body">
-
-                <center>
-                <form class="form-inline" action="#" method="post" novalidate="novalidate" id="inline-form">
+                <form class="form-group row" action="#" method="post" novalidate="novalidate" id="">
                     {% csrf_token %}
-                    {{ form.as_table }}
-
+                    <!-- {{ form.as_p }} -->
+                    <div class="form-group row">
+                        <label for="yard" class="col-sm-2 col-form-label">YARD</label>
+                        <div class="col-sm-3">
+                            {{ form.yard }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="alu" class="col-sm-2 col-form-label">ALU</label>
+                        <div class="col-sm-3">
+                            {{ form.alu }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="zn" class="col-sm-2 col-form-label">ZN</label>
+                        <div class="col-sm-3">
+                            {{ form.zn }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="aluc" class="col-sm-2 col-form-label">ALUC</label>
+                        <div class="col-sm-3">
+                            {{ form.aluc }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ss" class="col-sm-2 col-form-label">SS</label>
+                        <div class="col-sm-3">
+                            {{ form.ss }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pb" class="col-sm-2 col-form-label">PB</label>
+                        <div class="col-sm-3">
+                            {{ form.pb }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pvc" class="col-sm-2 col-form-label">PVC</label>
+                        <div class="col-sm-3">
+                            {{ form.pvc }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fibre" class="col-sm-2 col-form-label">FIBRE</label>
+                        <div class="col-sm-3">
+                            {{ form.fibre }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="others1" class="col-sm-2 col-form-label">OTHERS1</label>
+                        <div class="col-sm-3">
+                            {{ form.others1 }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="others2" class="col-sm-2 col-form-label">OTHERS 2</label>
+                        <div class="col-sm-3">
+                            {{ form.others2 }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nm" class="col-sm-2 col-form-label">NM</label>
+                        <div class="col-sm-3">
+                            {{ form.nm }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="total" class="col-sm-2 col-form-label">TOTAL</label>
+                        <div class="col-sm-3">
+                            {{ form.total }}
+                        </div>
+                    </div>
                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                        <span id="payment-button-amount">Create Mixture Material</span>
+                        <span id="payment-button-amount">Create Material Mixture</span>
                     </button>
 
                 </form>
-                 </center>
             </div>
         </div> <!-- .card -->
 

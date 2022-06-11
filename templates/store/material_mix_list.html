@@ -2,46 +2,22 @@
 
 {% block title %}Yard List{% endblock title %}
 
-{% block breadcrumbs %}
-<div class="breadcrumbs">
-    <div class="breadcrumbs-inner">
-        <div class="row m-0">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Yard</a></li>
-                            <li class="active">List</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock breadcrumbs %}
-
 {% block content %}
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="box-title">Yard List </h4>
+                <h4 class="box-title">Material Mixture List </h4>
+                <a href="{% url 'create-material-mix' %}">
+                    <button id="payment-button" type="submit" class="btn btn-lg btn-outline-primary float-right">Create
+                        Material Mixture</button></a>
             </div>
             <div class="card-body--">
-                <div class="table-stats order-table ov-h">
+                <div class="table-stats order-table" style="overflow-x:auto;">  
                     <table class="table ">
                         <thead>
                             <tr>
-                                <th class="serial">Yard</th>
+                                <th>Yard</th>
                                 <th>CHA</th>
                                 <th>OIL</th>
                                 <th>VP</th>
@@ -54,12 +30,13 @@
                                 <th>GST</th>
                                 <th>EXTRA COST</th>
                                 <th>TOTAL</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for material in material %}
                             <tr>
-                                <td>{{ material.yard}}</a></td>
+                                <td><a href="{% url 'update_mat_mix_items' material.id %}">{{ material.yard}}</a></td>
                                 <td>{{ material.cha }}</td>
                                 <td>{{ material.oil }}</td>
                                 <td>{{ material.vp }}</td>
@@ -72,9 +49,9 @@
                                 <td>{{ material.gst }}</td>
                                 <td>{{ material.extracost }}</td>
                                 <td>{{ material.total}}</td>
-                                <!-- <td><a href="{% url 'delete_items' material.id %}">
+                                <td><a href="{% url 'delete_mat_mix_items' material.id %}">
                                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">Delete</button></a>
-                                </td> -->
+                                </td>
 
 
                             </tr>

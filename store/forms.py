@@ -23,6 +23,21 @@ class SupplierForm(forms.Form):
         'data-val-required': 'Please enter supplier id',
     }))
 
+    # def clean(self):
+    #     self.add_error('supp_id', "ID Already exists")
+
+
+    
+
+
+
+class SupplierUpdateForm(forms.ModelForm):
+	class Meta:
+		model = Supplier
+		fields = [
+            'name','address','user'
+        ]    
+
 
 class YardForm(forms.ModelForm):
     class Meta:
@@ -42,6 +57,14 @@ class YardForm(forms.ModelForm):
                 'class': 'form-control', 'id': 'address'
             }),
         }
+
+
+class YardUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Yard
+        fields = [
+            'supplier','name', 'address'
+        ]        
 
 
 
@@ -77,6 +100,16 @@ class MaterialUpdateForm(forms.ModelForm):
 		model = MixMaterial
 		fields = [
             'yard','alu', 'zn', 'aluc','ss','pb','pvc','fibre','others1','others2','nm','total'
+        ]
+
+
+class MatMixUpdateform(forms.ModelForm):
+    class Meta:
+        model = MatMix
+
+        fields = [
+            'yard','cha', 'oil', 'vp','oh','dep','trans','flux','cusi',
+            'extrasi','gst','extracost','total'
         ]
 
 

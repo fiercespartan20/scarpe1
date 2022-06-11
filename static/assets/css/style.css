@@ -332,7 +332,6 @@ Googel Fonts  */
   transition: all 0.3s ease; }
 
 body {
-  display: table;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   width: 100%; }
@@ -544,6 +543,9 @@ canvas {
 
 /* Global Styles */
 /* Main Styles */
+
+
+
 aside.left-panel {
   background: #fff;
   height: 100vh;
@@ -559,6 +561,10 @@ aside.left-panel {
   z-index: 999; }
   aside.left-panel:hover {
     overflow-x: scroll; }
+
+
+
+
 
 .open aside.left-panel:hover {
   overflow-x: inherit; }
@@ -2195,7 +2201,7 @@ footer.site-footer {
     overflow-x: scroll; }
 
   aside.left-panel {
-    max-width: 83px;
+    max-width: 100%;
     width: 83px; }
     aside.left-panel .navbar .navbar-header {
       padding: 0; }

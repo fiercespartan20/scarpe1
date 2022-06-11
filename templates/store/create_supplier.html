@@ -42,16 +42,17 @@
                     <div class="card-body">
                         <form action="#" method="post" novalidate="novalidate">
                             {% csrf_token %}
+                            <p><mark>{{ error }}</mark></p>
                             <div class="form-group">
-                                <label for="name" class="control-label mb-1">Name</label>
+                                <label for="name" class="control-label mb-2">Name</label>
                                 {{ form.name }}
                             </div>
                             <div class="form-group">
-                                <label for="address" class="control-label mb-1">Address</label>
+                                <label for="address" class="control-label mb-2">Address</label>
                                 {{ form.address }}
                             </div>
                             <div class="form-group">
-                                <label for="supp_id" class="control-label mb-1">Supplier ID</label>
+                                <label for="supp_id" class="control-label mb-2">Supplier ID</label>
                                 {{ form.supp_id }}
                             </div>
                             <!-- <div class="form-group">

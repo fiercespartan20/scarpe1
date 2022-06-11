@@ -37,20 +37,95 @@
                 <strong class="card-title">Mixture Details</strong>
             </div>
             
-            <div class="card-body">
-
-                <center>
-                <form class="form-inline" action="#" method="post" novalidate="novalidate" id="inline-form">
+            <div class="card-body">    
+                              
+                <form class="form-group row" action="#" method="post" novalidate="novalidate" id="">
                     {% csrf_token %}
-                    {{ form.as_table }}
-
+                    <div class="form-group row">
+                        <label for="yard" class="col-sm-2 col-form-label">YARD</label>
+                        <div class="col-sm-3">
+                            {{ form.yard }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cha" class="col-sm-2 col-form-label">CHA</label>
+                        <div class="col-sm-3">
+                            {{ form.cha }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="oil" class="col-sm-2 col-form-label">OIL</label>
+                        <div class="col-sm-3">
+                            {{ form.oil }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="yard" class="col-sm-2 col-form-label">VP</label>
+                        <div class="col-sm-3">
+                            {{ form.vp }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="oh" class="col-sm-2 col-form-label">OH</label>
+                        <div class="col-sm-3">
+                            {{ form.oh }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dep" class="col-sm-2 col-form-label">DEP</label>
+                        <div class="col-sm-3">
+                            {{ form.dep }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="trans" class="col-sm-2 col-form-label">TRANS</label>
+                        <div class="col-sm-3">
+                            {{ form.trans }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="flux" class="col-sm-2 col-form-label">FLUX</label>
+                        <div class="col-sm-3">
+                            {{ form.flux }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cusi" class="col-sm-2 col-form-label">CUSI</label>
+                        <div class="col-sm-3">
+                            {{ form.cusi }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="extrasi" class="col-sm-2 col-form-label">EXTRA SI</label>
+                        <div class="col-sm-3">
+                            {{ form.extrasi }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="gst" class="col-sm-2 col-form-label">GST</label>
+                        <div class="col-sm-3">
+                            {{ form.gst }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="extracost" class="col-sm-2 col-form-label">EXTRA COST</label>
+                        <div class="col-sm-3">
+                            {{ form.extracost }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="total" class="col-sm-2 col-form-label">TOTAL</label>
+                        <div class="col-sm-3">
+                            {{ form.total }}
+                        </div>
+                    </div>
                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                         <span id="payment-button-amount">Create Material Mixture</span>
                     </button>
 
                 </form>
-                 </center>
             </div>
+
         </div> <!-- .card -->
 
     </div>
