@@ -34,31 +34,36 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="box-title">Yard List </h4>
-                <a href="{% url 'create-yard' %}">
-                    <button id="payment-button" type="submit" class="btn btn-lg btn-outline-primary float-right">Create Yard</button></a>
+                <h4 class="box-title">Create Metal</h4>
+                <a href="{% url 'create_metal' %}">
+                    <button id="payment-button" type="submit" class="btn btn-lg btn-outline-primary float-right">Create Metal</button></a>
             </div>
             <div class="card-body--">
-                <div class="table-stats order-table ov-h">
+                <div class="table-stats order-table" style="overflow-x:auto;">  
                     <table class="table ">
                         <thead>
                             <tr>
                                 <th class="serial">#</th>
                                 <th>Name</th>
-                                <th>Address</th>
-                                <th>Supplier Name</th>
+                                <th>Short Form</th>
+                                <th>Rate</th>
+                                <th>MISCELLANEOUS</th>
+                                <th>Update</th>
+                                <th></th>
                                 <th>Delete</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for yard in yards %}
+                            {% for field in metal %}
                             <tr>
                                 <td class="serial">{{ forloop.counter }}</td>
-                                <td>{{ yard.name }}</td>
-                                <td>{{ yard.address }}</td>
-                                <td>{{ yard.supplier}}</td>
-                                <th><a href="{% url 'update_yard' yard.id %}"><button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">Update</button></a></th>
-                                <td><a href="{% url 'delete_yard' yard.id %}"><button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">Delete</button></a></td>
+                                <td>{{ field.name }}</td>
+                                <td>{{ field.shortform }}</td>
+                                <td>{{ field.rate }}</td>
+                                <td>{{ field.misc }}</td>
+                                <td><a href="{% url 'update_metal' field.id  %}"><button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">Update</button></a><td>
+                                <td><a href="{% url 'delete_metal' field.id  %}"><button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">Delete</button></a><td>  
                             </tr>
                             {% endfor %}
                         </tbody>

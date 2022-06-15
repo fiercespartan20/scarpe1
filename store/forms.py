@@ -1,6 +1,6 @@
 from django import forms
 
-from store.models import Supplier, Yard, MatMix, MaterialMixP, MixMaterial, OverheadCost
+from store.models import Supplier, Yard, MatMix, MaterialMixP, MixMaterial, OverheadCost, metal, cost, grade
 
 
 class SupplierForm(forms.Form):
@@ -16,12 +16,12 @@ class SupplierForm(forms.Form):
         'data-val': 'true',
         'data-val-required': 'Please enter address',
     }))
-    supp_id = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'id': 'supp_id',
-        'data-val': 'true',
-        'data-val-required': 'Please enter supplier id',
-    }))
+    # supp_id = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'form-control',
+    #     'id': 'supp_id',
+    #     'data-val': 'true',
+    #     'data-val-required': 'Please enter supplier id',
+    # }))
 
     # def clean(self):
     #     self.add_error('supp_id', "ID Already exists")
@@ -35,7 +35,7 @@ class SupplierUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Supplier
 		fields = [
-            'name','address','user'
+            'name','address'
         ]    
 
 
@@ -267,3 +267,100 @@ class MaterialMixformP(forms.ModelForm):
 
         }        
 
+
+class MetalForm(forms.ModelForm):
+    class Meta:
+        model = metal
+        fields = [
+            'name','shortform','rate','misc'
+        ]
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+            'shortform': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'shortform'
+            }),
+            'rate': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'rate'
+            }),
+            'misc': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'misc'
+            })
+        }
+
+class MetalUpdateform(forms.ModelForm):
+    class Meta:
+        model = metal
+
+        fields = [
+            'name','shortform','rate','misc'
+        ]
+
+
+
+
+class CostForm(forms.ModelForm):
+    class Meta:
+        model = cost
+        fields = [
+            'name','shortform','rate','misc'
+        ]
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+            'shortform': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'shortform'
+            }),
+            'rate': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'rate'
+            }),
+            'misc': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'misc'
+            })
+        }
+
+class CostUpdateform(forms.ModelForm):
+    class Meta:
+        model = cost
+
+        fields = [
+            'name','shortform','rate','misc'
+        ]
+
+
+
+
+
+class GradeForm(forms.ModelForm):
+    class Meta:
+        model = grade
+        fields = [
+            'name','details','gradegrp','misc'
+        ]
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+            'details': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'details'
+            }),
+            'gradegrp': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'gradegrp'
+            }),
+            'misc': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'misc'
+            })
+        }        
+
+class GradeUpdateform(forms.ModelForm):
+    class Meta:
+        model = grade
+
+        fields = [
+            'name','details','gradegrp','misc'
+        ]

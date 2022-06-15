@@ -4,7 +4,6 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django import forms as formsm
 
-
 error = ""
 error2 = ""
 
@@ -15,9 +14,13 @@ from .models import (
     Yard,
     MatMix,
     MaterialMixP,
-    MixMaterial
+    MixMaterial,
+    cost, grade, metal
 )
 from .forms import (
+    CostUpdateform,
+    GradeUpdateform,
+    MetalUpdateform,
     OverheadCostForm,
     SupplierForm,
     YardForm,
@@ -28,7 +31,7 @@ from .forms import (
     MatMixform,
     MixMatform,
     SupplierUpdateForm,
-    YardUpdateForm
+    YardUpdateForm, CostForm, GradeForm, MetalForm
 )
 
 # Supplier views
@@ -41,20 +44,19 @@ def create_supplier(request):
         if forms.is_valid():
             name = forms.cleaned_data['name']
             address = forms.cleaned_data['address']
-            supp_id = forms.cleaned_data['supp_id']
+            # supp_id = forms.cleaned_data['supp_id']
 
-            try:
-                Supplier._default_manager.get(user_id=supp_id)
-                error = "ID already present.Please Use Another ID"
-                # raise formsm.ValidationError("")
+            # try:
+            #     Supplier._default_manager.get(user_id=supp_id)
+            #     error = "ID already present.Please Use Another ID"
+            #     # raise formsm.ValidationError("")
 
-            except Supplier.DoesNotExist:
-
-                Supplier.objects.create(name=name, address=address, user_id=supp_id)
-                return redirect('supplier-list')
+            # except Supplier.DoesNotExist:
+            Supplier.objects.create(name=name, address=address)
+            # Supplier.objects.create(name=name, address=address, user_id=supp_id)
+            return redirect('supplier-list')
     context = {
-        'form': forms,
-        'error': error,
+        'form': forms
     }
     return render(request, 'store/create_supplier.html', context)
 
@@ -291,27 +293,173 @@ class materialmixlist(ListView):
 
 
 
-def create_overheadCost(request):
-    forms = OverheadCostForm()
+# def create_overheadCost(request):
+#     forms = OverheadCostForm()
+#     if request.method == 'POST':
+#         forms = OverheadCostForm(request.POST)
+#         if forms.is_valid():
+#             yard = forms.cleaned_data['yard']
+#             name = forms.cleaned_data['name']
+#             cost = forms.cleaned_data['cost']
+#             OverheadCost.objects.create(
+#                 yard=yard,
+#                 name=name,
+#                 cost=cost,
+#             )
+#             return redirect('cost-list')
+#     context = {
+#         'form': forms
+#     }
+#     return render(request, 'store/overhead_cost.html', context)
+
+
+class CostListView(ListView):
+    model = cost
+    template_name = 'store/cost_list.html'
+    context_object_name = 'cost'
+
+
+
+
+def create_cost(request):
+    forms = CostForm()
     if request.method == 'POST':
-        forms = OverheadCostForm(request.POST)
+        forms = CostForm(request.POST)
         if forms.is_valid():
-            yard = forms.cleaned_data['yard']
             name = forms.cleaned_data['name']
-            cost = forms.cleaned_data['cost']
-            OverheadCost.objects.create(
-                yard=yard,
-                name=name,
-                cost=cost,
+            shortform = forms.cleaned_data['shortform']
+            rate = forms.cleaned_data['rate']
+            misc = forms.cleaned_data['misc']
+            cost.objects.create(
+                name=name, shortform=shortform, rate=rate, misc=misc
             )
             return redirect('cost-list')
     context = {
         'form': forms
     }
-    return render(request, 'store/overhead_cost.html', context)
+    return render(request, 'store/create_cost.html', context)    
 
 
-class CostListView(ListView):
-    model = OverheadCost
-    template_name = 'store/cost_list.html'
-    context_object_name = 'cost'
+
+def update_cost(request, pk):
+	queryset = cost.objects.get(id=pk)
+	form = CostUpdateform(instance=queryset)
+	if request.method == 'POST':
+		form = CostUpdateform(request.POST, instance=queryset)
+		if form.is_valid():
+			form.save()
+			return redirect('cost-list')
+
+	context = {
+		'form':form
+	}
+	return render(request, 'store/create_cost.html', context)    
+
+
+def delete_cost(request, pk):
+	queryset = cost.objects.get(id=pk)
+	if request.method == 'POST':
+		queryset.delete()
+		return redirect('cost-list')
+	return render(request, 'store/delete_items.html')    
+
+
+def create_metal(request):
+    forms = MetalForm()
+    if request.method == 'POST':
+        forms = MetalForm(request.POST)
+        if forms.is_valid():
+            name = forms.cleaned_data['name']
+            shortform = forms.cleaned_data['shortform']
+            rate = forms.cleaned_data['rate']
+            misc = forms.cleaned_data['misc']
+            metal.objects.create(
+                name=name, shortform=shortform, rate=rate, misc=misc
+            )
+            return redirect('metal-list')
+    context = {
+        'form': forms
+    }
+    return render(request, 'store/create_metal.html', context)  
+
+def update_metal(request, pk):
+	queryset = metal.objects.get(id=pk)
+	form = MetalUpdateform(instance=queryset)
+	if request.method == 'POST':
+		form = MetalUpdateform(request.POST, instance=queryset)
+		if form.is_valid():
+			form.save()
+			return redirect('metal-list')
+
+	context = {
+		'form':form
+	}
+	return render(request, 'store/create_metal.html', context)    
+
+
+def delete_metal(request, pk):
+	queryset = metal.objects.get(id=pk)
+	if request.method == 'POST':
+		queryset.delete()
+		return redirect('metal-list')
+	return render(request, 'store/delete_items.html')      
+
+
+class MetalListView(ListView):
+    model = metal
+    template_name = 'store/metal_list.html'
+    context_object_name = 'metal'       
+
+
+def create_grade(request):
+    forms = GradeForm()
+    if request.method == 'POST':
+        forms = GradeForm(request.POST)
+        if forms.is_valid():
+            name = forms.cleaned_data['name']
+            details = forms.cleaned_data['details']
+            gradegrp = forms.cleaned_data['gradegrp']
+            misc = forms.cleaned_data['misc']
+            grade.objects.create(
+                name=name, details=details, gradegrp=gradegrp, misc=misc
+            )
+            return redirect('grade-list')
+    context = {
+        'form': forms
+    }       
+
+    return redirect(request, 'store/create_grade.html', context) 
+
+def update_grade(request, pk):
+	queryset = grade.objects.get(id=pk)
+	form = GradeUpdateform(instance=queryset)
+	if request.method == 'POST':
+		form = GradeUpdateform(request.POST, instance=queryset)
+		if form.is_valid():
+			form.save()
+			return redirect('grade-list')
+
+	context = {
+		'form':form
+	}
+	return render(request, 'store/create_grade.html', context)    
+
+
+def delete_grade(request, pk):
+	queryset = grade.objects.get(id=pk)
+	if request.method == 'POST':
+		queryset.delete()
+		return redirect('grade-list')
+	return render(request, 'store/delete_items.html')      
+
+
+class GradeListView(ListView):
+    model = grade
+    template_name = 'store/grade_list.html'
+    context_object_name = 'grade'     
+
+
+
+
+
+

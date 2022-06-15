@@ -48,17 +48,21 @@
                                 <th>Supplier Id</th>
                                 <th>Name</th>
                                 <th>Address</th>
-                                <!-- <th>Delete</th> -->
+                                <th>Update</th>
+                                <th></th>
+                                <th>Delete</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {% if supplier %}
                             {% for supplier in supplier %}
                             <tr>
-                                <td>{{ supplier.user_id}}</td>
+                                <td>{{ supplier.id}}</td>
                                 <td>{{ supplier.name }}</td>
                                 <td>{{ supplier.address }}</td>
-                                <td></td>
+                                <td><a href="{% url 'update_supplier' supplier.id  %}"><button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">Update</button></a><td>
+                                <td><a href="{% url 'delete_supplier' supplier.id  %}"><button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">Delete</button></a><td>  
                             </tr>
                             {% endfor %}
                             {% else %}
